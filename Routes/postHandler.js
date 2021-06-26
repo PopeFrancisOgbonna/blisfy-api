@@ -88,12 +88,14 @@ const updatePost = (req, res, client) => {
       client.query(update_query,[title,richDescription,image, category,date], (err, result) => {
         if(err){
           console.log(err);
-          res.status(500).send("update Ooops! An error occured uploading your post, please try agin.");
+          res.status(500).send("Ooops! An error occured uploading your post, please try agin.");
           return;
         }
           console.log(result);
         res.status(200).send('Post Updated.');
       });
+    }else{
+      res.status(400).send("Post does not exist.");
     }
   });
   
