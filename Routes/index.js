@@ -18,11 +18,19 @@ const deleteCategory = (req, res) => { category.delet_single(req, res, client) }
 //post handlers 
 const createPost = (req, res) => { post.createPost(req, res, client) };
 const allPost = (req, res) => { post.allPost(req, res, client) };
+const updatePost = (req, res) => { post.updatePost(req, res, client)};
+const getSinglePost = (req, res) => { post.singlePost(req, res, client)};
+const categoryPost = (req, res) => { post.postCategory(req, res, client)};
+const deletePost = (req, res) => { post.deletePost(req, res, client)};
 
 module.exports = {
   newCategory,
   allCategory,
   deleteCategory,
   createPost,
+  updatePost,
   allPost,
+  getSinglePost,
+  categoryPost,
+  deletePost,
 }

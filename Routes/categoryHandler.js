@@ -1,6 +1,6 @@
 const addCategory = (req, res, client) => {
   const {category_name} = req.body;
-  let query = 'insert into category (name) values($1)';
+  let query = 'insert into category (category_name) values($1)';
   client.query(query, [category_name], (err, result) => {
     if(err){
       console.log(err);
@@ -22,10 +22,10 @@ const allCategory = (req, res, client) => {
 }
 
 const delet_single = (req, res, client) => {
-  const {id} =req.params;
-  const category_id = parseInt(id);
-  let query_string = "delete from category where category_id = $1";
-  client.query(query_string, [category_id], (err, result) => {
+  let {category} =req.params;
+  category = category.toLowerCase();
+  let query_string = "delete from category where LOWER(category_name) = $1";
+  client.query(query_string, [category], (err, result) => {
     if(err){
       console.log(err);
       res.status(400).send("Error: Category not found!");

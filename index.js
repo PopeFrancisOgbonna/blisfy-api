@@ -28,6 +28,13 @@ app.get('/', (req, res)=>{
 
 app.get("/all-category", router.allCategory);
 app.post("/new-category", router.newCategory);
-app.delete("/category/:id", router.deleteCategory);
+app.delete("/category/:category", router.deleteCategory);
+
+app.get("/posts", router.allPost);
+app.post("/create-post", router.createPost);
+app.post("/post/:id", router.updatePost);
+app.get("/post/view/:id", router.getSinglePost);
+app.get("/post/view-category/:category", router.categoryPost);
+app.delete("/post/article/:id", router.deletePost);
 
 app.listen(PORT, () =>{console.log(`Server runing on ${PORT}!!!`)});
